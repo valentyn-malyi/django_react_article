@@ -1,0 +1,16 @@
+{
+  "name": "django_react_article",
+  "version": "1.0.0",
+  "description": "this is django react article",
+  "main": "index.js",
+  "scripts": {
+    "web": "webpack"
+  },
+  "author": "Valentyn Malyi <valentynmalyi@gmail.com>",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
+}
