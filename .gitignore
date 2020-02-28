@@ -2,5 +2,6 @@
 node_modules/
 venv/
 
+
 *.sqlite3
 package-lock.json
