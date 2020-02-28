@@ -1,10 +1,15 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/icon">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <title>Title</title>
 </head>
 <body>
-<script src="index.js"></script>
+<div id="root"></div>
+<script type="text/javascript" src="{% static '<%=htmlWebpackPlugin.files.chunks["vendors~index"].entry%>' %}"></script>
+<script type="text/javascript" src="{% static '<%=htmlWebpackPlugin.files.chunks["index"].entry%>' %}"></script>
 </body>
 </html>
