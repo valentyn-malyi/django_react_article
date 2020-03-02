@@ -44,7 +44,8 @@ module.exports = {
             "@containers": path.resolve(__dirname, "src/containers"),
             "@components": path.resolve(__dirname, "src/components"),
             "@actions": path.resolve(__dirname, "src/actions"),
-            "@reducers": path.resolve(__dirname, "src/reducers")
+            "@reducers": path.resolve(__dirname, "src/reducers"),
+            "@assets": path.resolve(__dirname, "src/assets")
 
         }
     },
@@ -114,6 +115,13 @@ module.exports = {
                     }
                 }
             },
+            {
+                test: /\.(png|jpg|svg|gif)$/,
+                loader: "file-loader",
+                options: {
+                    name: '[name].[ext]',
+                },
+            }
         ]
     }
 }

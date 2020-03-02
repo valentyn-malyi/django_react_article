@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Item from "@components/body/Item";
 import {connect} from "react-redux"
 import {getArticles} from "@actions/article"
+import MyPicture from "@components/body/MyPicture";
 
 class Body extends Component {
 
@@ -17,6 +18,9 @@ class Body extends Component {
             {this.props.articles.map(a =>
                 <Item key={a.id} text={a.title}/>
             )}
+            <li>
+                <MyPicture/>
+            </li>
 
         </ul>
     }
