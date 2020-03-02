@@ -1,22 +1,29 @@
 import {GET_ARTICLES} from "@actions/types";
 
-
-export const getArticles = () => (dispatch, getState) => {
-    fetch("/api/v1/articles", {
+export const getArticles = () => async (dispatch, getState) => {
+    const res = await fetch("/api/v1/articles", {
         headers: {
             "method": "GET",
             "Content-Type": "application/json"
         }
     })
-        .then(res => res.json())
-        .then(res => {
-            dispatch({
-                type: GET_ARTICLES,
-                payload: {
-                    articles: res,
-                    isLoading: false
-                }
-            })
+    const data = await res.json()
+    if (data.error)
+        dispatch({
+            type: GET_ARTICLES,
+            payload: {
+                articles: [],
+                isLoading: false,
+                error: data
+            }
         })
-        .catch(err => console.log(err))
-};
+    else
+        dispatch({
+            type: GET_ARTICLES,
+            payload: {
+                articles: data,
+                isLoading: false,
+                error: null
+            }
+        })
+}

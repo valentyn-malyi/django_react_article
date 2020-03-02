@@ -11,24 +11,33 @@ class Body extends Component {
     }
 
     render() {
-        if (this.props.isLoading)
+        if (this.props.isLoading) {
             return <Fragment>
                 <MyPicture/>
             </Fragment>
-        else
-            return <ul className="list-group">
-                {this.props.articles.map(a =>
-                    <Item key={a.id} text={a.title}/>
-                )}
-            </ul>
-
+        } else {
+            if (this.props.error)
+                return <div>
+                    <pre>
+                        {JSON.stringify(this.props.error, null, 2)}
+                    </pre>
+                </div>
+            else
+                return <ul className="list-group">
+                    {this.props.articles.map(a =>
+                        <Item key={a.id} text={a.title}/>
+                    )}
+                </ul>
+        }
     }
 }
 
 const mapStateToProps = state => {
     return {
         articles: state.article.articles,
-        isLoading: state.article.isLoading
+        isLoading: state.article.isLoading,
+        error: state.article.error,
+        status: state.article.status
     }
 }
 

@@ -35,7 +35,7 @@ module.exports = {
     context: path.resolve(__dirname, "src"),
     mode: "development",
     entry: {
-        index: "./index.jsx"
+        index: ["@babel/polyfill", "./index.jsx"]
     },
     performance: {
         hints: false

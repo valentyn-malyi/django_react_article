@@ -2,7 +2,9 @@ import {GET_ARTICLES} from "@actions/types"
 
 const initialState = {
     articles: [],
-    isLoading: true
+    isLoading: true,
+    error: null,
+    status: null
 }
 
 export default function (state = initialState, action) {
