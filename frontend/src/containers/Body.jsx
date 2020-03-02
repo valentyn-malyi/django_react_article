@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Item from "@components/body/Item";
 import {connect} from "react-redux"
 import {getArticles} from "@actions/article"
@@ -8,26 +8,28 @@ class Body extends Component {
 
     componentDidMount() {
         this.props.getArticles()
-        console.log(this.state)
-        console.log(this.props)
-
     }
 
     render() {
-        return <ul className="list-group">
-            {this.props.articles.map(a =>
-                <Item key={a.id} text={a.title}/>
-            )}
-            <li>
+        if (this.props.isLoading)
+            return <Fragment>
                 <MyPicture/>
-            </li>
+            </Fragment>
+        else
+            return <ul className="list-group">
+                {this.props.articles.map(a =>
+                    <Item key={a.id} text={a.title}/>
+                )}
+            </ul>
 
-        </ul>
     }
 }
 
 const mapStateToProps = state => {
-    return {articles: state.article.articles}
+    return {
+        articles: state.article.articles,
+        isLoading: state.article.isLoading
+    }
 }
 
 export default connect(mapStateToProps, {getArticles})(Body)

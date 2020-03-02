@@ -12,7 +12,10 @@ export const getArticles = () => (dispatch, getState) => {
         .then(res => {
             dispatch({
                 type: GET_ARTICLES,
-                payload: res
+                payload: {
+                    articles: res,
+                    isLoading: false
+                }
             })
         })
         .catch(err => console.log(err))

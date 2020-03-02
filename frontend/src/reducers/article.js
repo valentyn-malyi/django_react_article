@@ -1,7 +1,8 @@
 import {GET_ARTICLES} from "@actions/types"
 
 const initialState = {
-    articles: []
+    articles: [],
+    isLoading: true
 }
 
 export default function (state = initialState, action) {
@@ -9,7 +10,7 @@ export default function (state = initialState, action) {
         case GET_ARTICLES:
             return {
                 ...state,
-                articles: action.payload
+                ...action.payload
             }
         default:
             return state

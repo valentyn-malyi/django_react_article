@@ -37,6 +37,9 @@ module.exports = {
     entry: {
         index: "./index.jsx"
     },
+    performance: {
+        hints: false
+    },
     resolve: {
         extensions: [".js", ".json", ".jsx"],
         alias: {
@@ -119,7 +122,8 @@ module.exports = {
                 test: /\.(png|jpg|svg|gif)$/,
                 loader: "file-loader",
                 options: {
-                    name: '[name].[ext]',
+                    name: "[name].[ext]",
+                    publicPath: "static/",
                 },
             }
         ]
